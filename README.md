@@ -12,7 +12,7 @@
 
 ## 規格書
 
-毛孩找家｜寵物領養互動網站規格書 v1.1
+毛孩找家｜寵物領養互動網站規格書 v1.2
 
 一、主題與目的
 製作一個溫暖奶油色風格的寵物領養互動網站，讓使用者瀏覽毛孩、依需求篩選，並收藏感興趣的寵物。核心目標是讓「認識、挑選、收藏」的流程容易理解與操作。
@@ -23,20 +23,20 @@
 三、資料範圍
 使用 8 隻虛構寵物作為示範資料：4 隻狗、4 隻貓。
 寵物名字：米米、橘子、豆豆、奶茶、阿福、芝麻、小白、布丁。
-每筆資料包含固定識別碼、名字、種類、年齡、性別、體型、所在地、個性標籤、介紹、照顧需求及內嵌示意插畫。
+每筆資料包含固定識別碼、名字、種類、年齡、性別、體型、所在地、個性標籤、介紹、照顧需求及內嵌的 AI 生成寫實示意照片。
 所在地涵蓋台北市、新北市、新竹市、台中市、台南市、高雄市；體型分小型、中型、大型。
 頁尾及詳細介紹均說明資料為虛構示範，不接受真實領養申請。
 
 四、畫面設計
 使用奶油色背景、陶土橘主色、鼠尾草綠點綴及圓角卡片。
 頂部放置網站名稱、毛孩列表入口、領養前提醒入口與收藏按鈕。
-首頁介紹區呈現「下一個家，從一次相遇開始」及貓狗插畫。
+首頁介紹區呈現「下一個家，從一次相遇開始」及林間金色狗狗的寫實主圖。
 下方先呈現生活配對測驗入口，再依序呈現搜尋篩選區、結果數量、寵物卡片及領養前的時間、空間與長期承諾提醒。
 桌面寵物卡片採四欄，較窄畫面兩欄，手機一欄。
 
 五、功能規格與驗收方式
 1. 瀏覽寵物
-開啟頁面後顯示 8 張卡片，每張包含示意插畫、名字、性別、年齡、體型、所在地及個性標籤。
+開啟頁面後顯示 8 張卡片，每張包含寫實示意照片、名字、性別、年齡、體型、所在地及個性標籤。
 
 2. 種類篩選
 可切換全部毛孩、狗狗、貓咪；顯示目前選取狀態。只有種類篩選時，狗狗和貓咪各顯示 4 隻。
@@ -53,7 +53,7 @@
 清空搜尋詞、所在地、體型與種類，恢復當前清單的所有資料。在收藏頁重設時仍保留收藏頁模式。
 
 6. 詳細介紹
-點擊卡片的「認識」按鈕，開啟詳細介紹視窗，顯示該毛孩的插畫、資訊、個性、介紹及照顧需求。
+點擊卡片的「認識」按鈕，開啟詳細介紹視窗，顯示該毛孩的照片、資訊、個性、介紹及照顧需求。
 可在視窗內收藏或取消收藏，並可按關閉按鈕、Esc 或點擊視窗外部返回。採原生 dialog 元素；鍵盤焦點與行動裝置操作仍需以瀏覽器實際驗收。
 
 7. 收藏與取消收藏
@@ -116,7 +116,7 @@
 - 貓／2 小時以上／熱鬧／自在互動／慢慢建立信任：顯示目前沒有接近條件的毛孩。
 
 六、技術與交付形式
-最終網站為單一 index.html，HTML、CSS、JavaScript、寵物資料與 SVG 插畫全部內嵌。
+最終網站為單一 index.html，HTML、CSS、JavaScript、寵物資料、JPEG 示意照片與 SVG 圖示全部內嵌。
 不使用外部圖片、字型服務、套件、後端、登入系統或外部 API。
 可下載後以現代瀏覽器開啟；正式公開版本以 GitHub Pages 網址為準。
 表單具有文字標籤、按鈕具有可讀名稱與收藏狀態，並提供鍵盤焦點樣式及減少動畫設定。
@@ -130,8 +130,38 @@
 
 第六輪：使用者要求加入生活習慣配對小測驗。新增 5 題、進度、單選驗證、回上一題、推薦理由、低符合程度提示、修改答案與重新測驗，並與原有詳情和收藏共用資料。45 項邏輯與事件檢查通過，包含全部 243 種答案組合；配對理由以虛構資料設定為依據。
 
+第七輪：使用者提供暖色調寵物攝影作為風格參考，要求圖片更真實。使用內建圖片生成工具，製作 8 張自然光、柔焦背景的寫實示意照片，對應既有毛色、種類及體型設定；首頁改用林間金色狗狗照片。照片壓縮後內嵌 HTML，列表、測驗結果及詳情共用同一隻毛孩的照片，並檢查手機比例裁切。網站標示照片為 AI 生成示意；47 項邏輯與事件檢查通過。
+
 八、驗證狀態
-已進行：HTML 結構與識別碼檢查、外部資源依賴檢查、JavaScript 語法檢查、使用替代 DOM 的 45 項邏輯及事件測試（含全部 243 種測驗答案組合）。
+已進行：HTML 結構與識別碼檢查、外部資源依賴檢查、JavaScript 語法檢查、使用替代 DOM 的 47 項邏輯及事件測試（含全部 243 種測驗答案組合）。
 待進行：在真實瀏覽器確認桌面／手機排版、鍵盤與視窗操作、重新整理後的收藏；GitHub Pages 更新部署完成確認、公開網址驗證與介面截圖。
 邏輯測試不等同完整瀏覽器測試。
 
+
+## 寫實照片的規格與驗收
+
+- 首頁、寵物卡片、詳細介紹、測驗推薦採同一組 8 張 AI 生成示意照片。
+- 所有照片以 JPEG data URL 內嵌，網站仍為單一 index.html，約 0.8 MB；不需外部圖片網址或額外素材資料夾。
+- 卡片和手機詳情以頂部對齊裁切，優先保留毛孩的臉與耳朵；提供圖片尺寸和替代文字。
+- 首頁主圖直接存在 HTML；其餘卡片照片隨互動資料一起呈現。
+- 原始圖片已目視檢查；另檢查手機卡片比例的圖片裁切，這不等同真實手機瀏覽器驗證。
+- 47 項程式邏輯與事件檢查通過，包含既有搜尋、收藏、測驗，以及跨區共用照片的檢查。
+
+## 圖片生成提示詞
+
+使用內建圖片生成工具。所有照片為虛構領養資料的示意，並非真實待領養動物。
+
+共用方向：Photorealistic natural editorial DSLR pet photography, eye-level view, realistic anatomy and detailed fur, shallow depth of field, soft natural daylight, warm cream/caramel and muted sage palette. Exactly one animal; complete face and both ears inside the frame, with generous margin for responsive cropping. No humans, additional animals, text, signs, logos, watermarks, collage or cartoon/3D rendering.
+
+每張照片的主體設定：
+
+| 毛孩 | 主體與場景提示詞 |
+| --- | --- |
+| 米米 | Adult medium-sized female mixed-breed dog, golden-tan coat, floppy ears, gentle brown eyes, friendly expression, sitting in a quiet garden. |
+| 橘子 | Young adult ginger tabby cat, orange stripes and amber eyes, curious affectionate expression, beside a warm sunlit window. |
+| 豆豆 | Adult small tan-and-brown mixed-breed terrier dog, upright ears, short textured fur, lively eyes, sitting on a garden lawn. |
+| 奶茶 | Adult female taupe-gray short-haired cat, round gentle face, green-gold eyes, quiet expression, on a cream cushion near a window. |
+| 阿福 | Adult large golden retriever, golden fur, friendly eyes, natural open-mouth smile, muted blue collar, sitting on a woodland footpath; whole face, ears, front legs and paws in frame. |
+| 芝麻 | Adult charcoal-black short-haired cat, subtle dark fur highlights, green eyes, dignified expression, near a window with a soft sage home background. |
+| 小白 | Young adult medium-sized white mixed-breed dog, upright ears, creamy short coat, brown eyes, lively expression, in a sunlit garden. |
+| 布丁 | Eight-month-old cream and pale-orange tabby kitten, subtle stripes, amber eyes, playful expression, in a cozy naturally lit home. |
